@@ -47,7 +47,7 @@ import "fmt"
 func main() {
 	fmt.Printf("Hello, world.\n")
 }
-
+```
 
 
 用 `go` 工具构建并安装此程序：
