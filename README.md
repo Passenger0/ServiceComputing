@@ -1,5 +1,5 @@
 # 			实验报告
-实验详细步骤见https://blog.csdn.net/Excef/article/details/100847614
+实验环境配置详细步骤见https://blog.csdn.net/Excef/article/details/100847614
 
 ### `1.GOPATH` 环境变量
 
