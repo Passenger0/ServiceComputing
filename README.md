@@ -12,10 +12,11 @@ $ mkdir $HOME/gowork
 $ vim ~/.profile
 
 $ export GOPATH=$HOME/gowork
+$ export PATH=$PATH:$GOPATH/bin
 ```
 
 ```
-![7](环境/7.png$ export PATH=$PATH:$GOPATH/bin
+
 
 执行配置
 $ source $HOME/.profile
