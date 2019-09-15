@@ -13,9 +13,6 @@ $ vim ~/.profile
 
 $ export GOPATH=$HOME/gowork
 $ export PATH=$PATH:$GOPATH/bin
-```
-
-```
 
 
 执行配置
@@ -24,7 +21,6 @@ $ source $HOME/.profile
 
 检查配置:
 go env
-```
 
 ![7](assets/7-1568509204452.png)
 
@@ -55,8 +51,9 @@ func main() {
 	fmt.Printf("Hello, world.\n")
 }
 
+
+
 用 `go` 工具构建并安装此程序：
-```
 
 ```
 $ go install github.com/user/hello
