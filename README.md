@@ -17,15 +17,12 @@ $ export PATH=$PATH:$GOPATH/bin
 
 执行配置
 $ source $HOME/.profile
-
+```
 
 检查配置:
 go env
 
 ![7](assets/7-1568509204452.png)
-
-
-
 ### 第一个程序
 
 创建基本工作路径`github.com/user` 
