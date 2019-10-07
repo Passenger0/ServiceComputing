@@ -94,7 +94,42 @@
 
 ### 4、测试结果
 
+首先需要安装pflag
 
+```go
+go get github.com/spf13/pflag
+go install github.com/spf13/pflag
+```
+
+![1](assets/1-1570465337795.png)
+
+进入selpg文件夹并运行go build编译程序，然后开始测试。
+
+1. ./selpg  -s1 -e1  test.txt 会将测试文件test.txt中第一页的内容读取到标准输出。为了方便debug，程序还增加了一些输出信息，最后再程序完成时删去了大多数，但还是i留下了两句
+
+2. ./selpg  -s1 -e2  test.txt 会将测试文件test.txt中第一页和第二页的内容读取到标准输出。但是此文件只有一页，所以程序只会将第一页的内容输出然后报错
+
+   ![2](assets/2-1570466179598.png)
+
+3. ./selpg  -s  1 -e  1  test.txt  >dest.txt  会将测试文件的第一页的内容复制到dest.txt。
+
+   注意-s, -e等的参数可不紧挨着其前缀.
+
+   ![3](assets/3-1570466403000.png)
+
+   此时打开dest.txt文件查看内容,程序输出的所有信息都写入了此文件(包含提示信息,可在程序中删除):
+
+   ![4](assets/4-1570466438126.png)
+
+4. ./selpg  -s  2 -e  5  littlePrince.txt  >dest.txt.为了让测试效果明显,我们换了一个较大的测试文件,将其第二页到第五页复制到dest.txt.
+
+   ![5](assets/5-1570466634390.png)
+
+   ![6](assets/6.png)
+
+   对比后可知dest.txt(除开提示信息所)写入的第一行数据即为littlePrince.txt的第二页第一行数据
+
+5. de1
 
 ### 5、参考资料
 
@@ -102,4 +137,6 @@
 2. <https://blog.csdn.net/chenbaoke/article/details/42556949>
 3. <https://blog.csdn.net/PeanutDo1t/article/details/83020872>
 4. <https://www.ibm.com/developerworks/cn/linux/shell/clutil/index.html>
+5. <https://blog.csdn.net/liuyh73/article/details/83025189>
+6. <https://blog.csdn.net/weixin_34195364/article/details/88728991>
 
