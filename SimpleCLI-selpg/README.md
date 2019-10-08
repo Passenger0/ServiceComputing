@@ -123,13 +123,75 @@ go install github.com/spf13/pflag
 
 4. ./selpg  -s  2 -e  5  littlePrince.txt  >dest.txt.为了让测试效果明显,我们换了一个较大的测试文件,将其第二页到第五页复制到dest.txt.
 
+   ![1](assets/1-1570491585676.png)
+
+   此时的dest.txt和littlePrince.txt
+
    ![5](assets/5-1570466634390.png)
 
    ![6](assets/6.png)
 
-   对比后可知dest.txt(除开提示信息所)写入的第一行数据即为littlePrince.txt的第二页第一行数据
+   ![2](assets/2-1570492449973.png)
 
-5. de1
+   ![3](assets/3-1570492456217.png)
+
+   对比后可知dest.txt(除开提示信息所)写入的第一行数据即为littlePrince.txt的第二页第一行数据，最后一行数据即为littlePrince.txt第五页的最后一行数据，dest.txt共四页，操作成功。
+
+5. ./selpg -s1 -e1 <  test.txt把test.txt的第一页写至标准输出（因为这里并没有重定向管道）
+
+   ]![7](assets/7.png)
+
+6. ./selpg  -s1 -e2  test.txt  2>error.txt (“2>”不可少)将测试文件第一页到第二页的数据写入标准输出，但将报错信息写入error.txt.由于test.txt只有1页，所以系统会输出第一页的内容并将报错写至error.txt。
+
+   ![8](assets/8.png)
+
+   此时的error.txt：
+
+   ![1](assets/1-1570492929111.png)
+
+7. ./selpg  -s1 -e2  test.txt  >dest.txt   2>error.txt.将测试文件第一页到第二页的数据写入dest.txt，但将报错信息写入error.txt.由于test.txt只有1页，所以系统会输出第一页的内容并将报错写至error.txt。
+
+   ![10](assets/10.png)
+
+   此时的dest.txt和error.txt
+
+   ![1](assets/1-1570493198203.png)
+
+   ![2](assets/2-1570493203901.png)
+
+8. ./selpg  -help输出selpg的用法
+
+   ![1](assets/1-1570493394487.png)
+
+9. hello  |  ./selpg  -s1  -e1将会把hello（之前hello.go编译的可执行文件）程序的输出重定向至selpg的标准输出。同理也可将selpg命令的输出当作某个程序/进程的输入。
+
+   ![QQ截图20191008081131](assets/QQ截图20191008081131.png)
+
+10. ./selpg  -s2 -e5 -l60  littlePrince.txt  >dest.txt.会将littlePrince.txt的第2到第5页复制到dest.txt，但是每页行数为60.
+
+   ![2](assets/2-1570494144011.png)
+
+11. ./selpg  -s2 -e5 -f  littlePrince.txt  >dest.txt.会将littlePrince.txt的第2到第5页复制到dest.txt,按换页符分页。实验时发现littlePrince.txt没有出现过换页符，整体被当作一页，所以上面的语句会报错，但把开始页和结束页改为1时，程序会将littlePrince.txt全部复制到dest.txt.
+
+    ![3](assets/3-1570494581951.png)
+
+    注意：虽然./selpg  -s1 -e5 -f  littlePrince.txt  >dest.txt也会报错，但报错是在程序将littlePrince.txt全部复制到dest.txt.之后。
+
+    此时的dest.txt（共3203行，包括3条提示信息，可在程序代码中除去）与littlePrince.txt（共3200行）一致
+
+    ![5](assets/5-1570494812228.png)
+
+    ![7](assets/7-1570495036252.png)
+
+    
+
+    ![6](assets/6-1570495044862.png)
+
+    
+
+    ##### 综上，selpg功能基本正常
+
+    
 
 ### 5、参考资料
 
@@ -139,4 +201,5 @@ go install github.com/spf13/pflag
 4. <https://www.ibm.com/developerworks/cn/linux/shell/clutil/index.html>
 5. <https://blog.csdn.net/liuyh73/article/details/83025189>
 6. <https://blog.csdn.net/weixin_34195364/article/details/88728991>
+7. <https://www.linuxidc.com/Linux/2012-12/75353.htm>
 
