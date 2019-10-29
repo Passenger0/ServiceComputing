@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"git.go-online.org.cn/passenger0/agenda/entity"
-	"git.go-online.org.cn/passenger0/agenda/service"
+	"agenda/entity"
+	"agenda/service"
 	"github.com/spf13/cobra"
 )
 

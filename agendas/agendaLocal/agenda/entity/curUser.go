@@ -19,7 +19,7 @@ type curUserInfo struct{
 }
 
 var curUser curUserInfo
-var curUserFile string = os.Getenv("GOPATH") + "/src/git.go-online.org.cn/passenger0/agenda/data/curUser.txt"
+var curUserFile string = os.Getenv("GOPATH") + "/src/agenda/data/curUser.txt"
 //var curUserFile string = os.Getenv("GOPATH") + "/src/agenda/data/curUser.txt"
 
 func init() {

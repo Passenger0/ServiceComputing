@@ -3,7 +3,7 @@ package service
 import (
 	"bufio"
 	"os"
-	"git.go-online.org.cn/passenger0/agenda/entity"
+	"agenda/entity"
 	"log"
 	"encoding/json"
 	//"fmt"
@@ -16,9 +16,7 @@ type UserList struct{
 
 
 var AllUser UserList
-//var userfile string = os.Getenv("GOPATH") + "/src/git.go-online.org.cn/passenger0/agenda/data/users.json"
-
-var userfile string = "/home/go-online/go/src/git.go-online.org.cn/passenger0/agenda/data/users.json"
+var userfile string = os.Getenv("GOPATH") + "/src/agenda/data/users.json"
 
 func init() {
 	AllUser.readFromFile()
@@ -99,8 +97,7 @@ func (u *UserList)readFromFile() {
 	//判断文件是否存在
 	_, err := os.Stat(userfile)
 	if os.IsNotExist(err) {
-		//os.Mkdir(os.Getenv("GOPATH") + "/src/git.go-online.org.cn/passenger0/agenda/data", 0777)
-        os.Mkdir("/home/go-online/go/src/git.go-online.org.cn/passenger0/agenda/data", 0777)
+		os.Mkdir(os.Getenv("GOPATH") + "/src/agenda/data", 0777)
 		return 
 	}
 

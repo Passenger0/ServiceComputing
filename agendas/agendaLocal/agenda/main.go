@@ -14,7 +14,7 @@
 
 package main
 
-import "git.go-online.org.cn/passenger0/agenda/cmd"
+import "agenda/cmd"
 
 func main() {
 	cmd.Execute()

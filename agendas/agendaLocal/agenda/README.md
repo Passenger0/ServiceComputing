@@ -1,0 +1,1 @@
+本地版agenda，请将本文件移至在$GOPATH/src目录下。

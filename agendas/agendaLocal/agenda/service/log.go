@@ -13,11 +13,8 @@ var (
 
 var errLog, infoLog *os.File
 
-//var infoLogPath = os.Getenv("GOPATH") + "/src/git.go-online.org.cn/passenger0/agenda/data/info.log"
-//var errLogPath = os.Getenv("GOPATH") + "/src/git.go-online.org.cn/passenger0/agenda/data/error.log"
-
-var infoLogPath = "/home/go-online/go/src/git.go-online.org.cn/passenger0/agenda/data/info.log"
-var errLogPath = "/home/go-online/go/src/git.go-online.org.cn/passenger0/agenda/data/error.log"
+var infoLogPath = os.Getenv("GOPATH") + "/src/agenda/data/info.log"
+var errLogPath = os.Getenv("GOPATH") + "/src/agenda/data/error.log"
 
 var infoWriter, errWriter []io.Writer
 
@@ -45,7 +42,7 @@ func getLogFile(logPath string) *os.File  {
 	//判断文件是否存在，不存在则创建目录
 	_, err := os.Stat(logPath)
 	if os.IsNotExist(err) {
-		os.Mkdir("/home/go-online/go/src/git.go-online.org.cn/passenger0/agenda/data", 0777)
+		os.Mkdir(os.Getenv("GOPATH") + "/src/agenda/data", 0777)
 	}
 	
 	//打开文件（文件不存在则会创建）
