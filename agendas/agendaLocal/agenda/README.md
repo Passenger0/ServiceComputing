@@ -89,6 +89,7 @@ F:\Go\gowork\src\agenda>agenda login -u fsql -p 123
 Info: 2019/10/29 16:50:38 fsql  login succeed!
 ```
 当前登录的用户信息会存在与agenda/data/curUser.txt中：
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191029165207534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2Vm,size_16,color_FFFFFF,t_70)
 
 5. **agenda qryuse**r：在登陆之后查询所有用户信息
