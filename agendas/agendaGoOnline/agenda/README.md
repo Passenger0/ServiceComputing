@@ -6,7 +6,169 @@ GoOnlie项目地址： http://139.9.57.167:20080/share/bmrucau76kvt6d9qr9dg?secr
 
 
 
-由于GoOnline的工作环境较为不同，所以需要将代码中与路径有关的部分中的“passenger0”换成你的用户名，如：
+若想要在自己的GoOnline中新建项目运行，则需要将代码中与路径有关的部分中的“passenger0”换成你的用户名，如：
 
 ![QQ截图20191029150751](assets/QQ截图20191029150751.png)
+
+# 可运行命令
+
+ - **./agenda -h ：列出程序说明**
+ - **./agenda \<command> -h :列出命令说明**
+ - **./agenda register -u username –p password –e email -t telphone ：用户注册**
+ - **./agenda login -u usename -p password：用户登录**
+ - **./agenda logout：用户登出**
+ - **./agenda qryuser：查询所有用户信息**
+ - **./agenda deluser -p password：注销当前账号**
+
+
+
+# GoOnline操作注意事项
+
+由于GoOnline的环境较为特殊，且GOPATH有两个路径，所欲在GoOnline上运行此程序需要注意一些问题。
+
+### 1. 运行前给home目录递归777权限
+
+直接运行go run，go build或者go install 会报错，需要使用如下语句赋予我们访问此项目所有文件的权限：
+
+```
+chmod -R 777 /home
+```
+
+![777home](assets/777home.png)
+
+### 2. 运行程序
+
+在GoOnlie上运行go install 后，并不能直接使用agenda，因为它存在两个GOPATH，如下图：
+
+![path](assets/path.png)
+
+经过检查可知，agenda被安装在了第一个GOPATH的bin子目录：
+
+```go
+/home/go-online/go/bin
+```
+
+为了使用agenda，我们需要**进入如上目录**，并且使用“./agenda”表示运行agenda的相关命令（本地调用只需要“agenda” 即可），如安装成功后运行**./agenda**（同.**/agenda -h**）。
+
+# 运行实例
+
+1. **./agenda**（同.**/agenda -h**）
+
+```go
+$./agenda
+A simple version of agenda,a meeting-manage system.
+
+Usage:
+  agenda [command]
+
+Available Commands:
+  deluser     delete the current user from the system
+  help        Help about any command
+  login       User login an account
+  logout      user logout the account
+  qryuser     query all the users
+  register    Used to register an account
+
+Flags:
+      --config string   config file (default is $HOME/.agenda.yaml)
+  -h, --help            help for agenda
+  -t, --toggle          Help message for toggle
+
+Use "agenda [command] --help" for more information about a command.
+subcommand is required
+                                     
+                                     
+```
+2. **./agenda \<command> -h** :列出命令说明，以agenda register - h 为例：
+
+```go
+$./agenda register -h
+Use the register command in one of the forms below to register an account:
+        1. agenda register -u username -p password -e email -t telephone
+        2. agenda register -uusername  -ppassword  -eemail  -ttelephone
+
+        Flags:
+                -u username
+                -p password
+                -e email
+                -t telephone
+
+Usage:
+  agenda register [flags]
+
+Flags:
+  -e, --email string   email address
+  -h, --help           help for register
+  -p, --pass string    password
+  -t, --tel string     telephone number
+  -u, --user string    username
+
+Global Flags:
+      --config string   config file (default is $HOME/.agenda.yaml)
+      
+      
+```
+
+3. **./agenda register -u username –p password –e email -t telphone** ：用户注册（必须提供四个flag的值）
+
+下面的命令注册了一个用户名为fsql，密码为123，邮箱为fsq@mail.com，电话为12345678的用户
+```
+$./agenda register -u fsql -p 123 -e fsq@mail.com -t 12345678
+Info: 2019/10/29 16:44:38 fsql  register succeed!
+```
+假如用户名已存在：
+
+```
+$./agenda register -u fsq -p 123 -e fsq@mail.com -t 12345678
+Error: 2019/10/29 16:44:03 fsq  register failed: username has been used!
+```
+注：Info与Error在输出到标准输出的同时也会写入info.log和error.log（可在agenda/data/目录中查看）
+
+
+
+4. **./agenda login -u usename -p password：用户登录**
+
+```
+$./agenda login -u fsql -p 123
+Info: 2019/10/29 16:50:38 fsql  login succeed!
+```
+当前登录的用户信息会存在与agenda/data/curUser.txt中：
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191029165207534.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0V4Y2Vm,size_16,color_FFFFFF,t_70)
+
+
+
+5. **./agenda qryuser：在登陆之后查询所有用户信息**
+
+
+```
+$./agenda qryuser
+There are  3  users：
+Name--Email--Telephone
+fsq   test@qq.com   12345678
+fsq2   test@qq.com   12345678
+fsql   fsq@mail.com   12345678
+Info: 2019/10/29 16:53:01 fsql  qryuser succeed!
+
+
+```
+6. **./agenda logout：用户登出**
+
+```
+$./agenda logout
+Info: 2019/10/29 16:54:26 fsql  logout succeed!
+
+
+```
+
+7. **./agenda deluser -p password：注销当前账号（在注销前需要保证用户已登录）**
+
+```
+
+$./agenda deluser
+Error: 2019/10/29 16:56:05 fsql  deluser failed: password must be provided
+
+$./agenda deluser -p 123
+Info: 2019/10/29 16:56:13 fsql  deluser succeed!
+```
 
