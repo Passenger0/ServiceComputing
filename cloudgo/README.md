@@ -169,29 +169,48 @@ Percentage of the requests served within a certain time (ms)
 #### ab测试参数解读：
 
 Server Software:                                                          #服务器使用的软件，即响应头的Server字段
+
 Server Hostname:        localhost                                 # 服务器主机名，即请求头的 Host 字段
+
 Server Port:            8080                                             #服务器请求端口
 
 Document Path:          /Passenger0                             # 文档路径，即请求头的请求路径
+
 Document Length:        17 bytes                                  #文档长度，即响应头的 Content-Length 字段
 
 Concurrency Level:      100                                           # 并发等级，即每次的并发数
+
 Time taken for tests:   1.146 seconds                           #测试花费的时间
+
 Complete requests:      1000                                        # 完成的请求数
+
 Failed requests:        0                                                    #失败的请求数
+
 Total transferred:      134000 bytes                                 #总传输字节数
+
 HTML transferred:       17000 bytes                                # HTML 报文总传输字节数
+
 Requests per second:    872.65 [#/sec] (mean)             # 平均每秒的请求数
+
 Time per request:       114.593 [ms] (mean)                # 平均每个请求花费的时间
+
 Time per request:       1.146 [ms] (mean, across all concurrent requests)         # 平均每个请求花费的时间（考虑并发）
+
 Transfer rate:          114.19 [Kbytes/sec] received       #平均每秒传输的千字节数
 
 Connection Times (ms)                                            #传输时间统计
-              min  mean[+/-sd] median   max
+
+​              min  mean[+/-sd] median   max
+
 Connect:        0    0   0.4      0       1                     # 连接时间
+
 Processing:    24  108  20.9    113     145            #处理时间
+
 Waiting:        1  108  21.2    113     144           # 等待时间
+
 Total:         25  109  20.9    113     145            #总时间
+
+
 
 Percentage of the requests served within a certain time (ms)            #一定时间内服务了的请求数所占的百分比
   50%    113                        #113毫秒内服务了50%的请求
