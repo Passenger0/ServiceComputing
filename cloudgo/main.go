@@ -1,4 +1,4 @@
-// learn from Mr.PanMaolin's "main.go"
+
 
 package main
 

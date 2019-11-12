@@ -1,4 +1,5 @@
 # cloudgo
+
 ## 概述
 
 开发简单 web 服务程序 cloudgo，了解 web 服务器工作原理。
@@ -6,6 +7,12 @@
 环境：Windows10/curl-7.55.1/ApacheBench 2.3
 
 工具：VS Code
+
+
+
+## 解读博客：
+
+https://blog.csdn.net/Excef/article/details/103020792 （含windows ApacheBench的使用）
 
 
 
